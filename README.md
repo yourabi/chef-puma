@@ -78,9 +78,6 @@ Find a bug? Want a feature? Submit an [issue here](http://github.com/yourabi/che
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
 
 1. Fork the repository on Github
 
