@@ -36,6 +36,30 @@ For example - in the following example to do a 'phased-restart' (zero downtime d
       workers 2
     end
 
+ 
+Common Settings
+-----
+
+directory: Working directory of your app. This is where config.ru is.
+
+puma_directory: directory where sockets, state and logs will be stored. Defaults to <directory>/shared/puma
+
+environment: (default = production)
+
+bind: defults to unix socket (at unix:///srv/app/shared/puma/app.sock) can speficy TCP socket instead such as "tcp://0.0.0.0:9292"
+
+exec_prefix: default bundle exec 
+
+thread_min: min number of threads in puma threadpool 
+
+thread_max: max number of threads in puma threadpool 
+
+workers: number of worker processes defaults to 0, must be greater than 0 for phased restarts
+
+monit: (true) set to false to disable monit functionality
+
+logrotate: (true) set to false to disable logrotate functionality
+
 
 Issues
 ------
