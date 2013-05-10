@@ -1,7 +1,7 @@
 Puma Cookbook
 =============
 
-Chef cook for the puma server.
+Chef cook for the [puma](http://puma.io) server.
 
 The defaults assume you are deploying with capistrano and will write all configuration and logs to the shared/puma directory... However the configuration should be flexible enough to support any deployment setup.
 
@@ -60,6 +60,16 @@ monit: (true) set to false to disable monit functionality
 
 logrotate: (true) set to false to disable logrotate functionality
 
+Attributes
+==========
+
+See the `attributes/default.rb` for default values. 
+
+
+* `node['puma']['version']` - Version of puma to install
+  
+* `node['puma']['bundler_version']` - Version to bundler to install
+
 
 Issues
 ------
@@ -92,4 +102,17 @@ License: Apache
 
 Authors: Yousef Ourabi
 
-About: This was originally developed for use at Burstorm: http://www.burstorm.com
+About: This was originally developed for use at Burstorm 
+    http://www.burstorm.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
