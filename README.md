@@ -99,9 +99,7 @@ License: Apache
 
 Authors: Yousef Ourabi
 
-About: This was originally developed for use at Burstorm 
-
-    http://www.burstorm.com
+About: This was originally developed for use at [Burstorm](http://www.burstorm.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
