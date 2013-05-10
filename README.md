@@ -1,7 +1,7 @@
 Puma Cookbook
 =============
 
-Chef cook for the [puma](http://puma.io) server.
+Chef cookbook for the [puma](http://puma.io) server.
 
 The defaults assume you are deploying with capistrano and will write all configuration and logs to the shared/puma directory... However the configuration should be flexible enough to support any deployment setup.
 
