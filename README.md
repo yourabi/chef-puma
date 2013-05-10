@@ -18,11 +18,13 @@ monit, logrotate
 
 Usage
 -----
-Basic Config using defaults based off the application name:
+Basic puma configuration using defaults based off the application name:
 
     puma_config "app"
   
-Custom config overriding app settings. In this example the configuration files and helper scripts will be placed in /srv/app/shared/puma.
+Custom config overriding app settings. In this example the configuration files and helper scripts will be placed in /srv/app/shared/puma. 
+
+For example - in the following example to do a 'phased-restart' (zero downtime deploy) after deploying your code you would run the /srv/app/shared/puma/puma_phased_restart.sh script.
 
     puma_config "app" do
       directory "/srv/app"
