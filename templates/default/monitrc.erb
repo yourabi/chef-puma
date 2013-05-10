@@ -1,0 +1,7 @@
+check process <%= @name %>.puma with pidfile <%= @pidfile %>
+      start program = "/bin/su - <%= @user %> -c 'cd <%= @working_dir %> && <%= @exec_prefix %> puma -C <%= @config_path %>'" with timeout 10 seconds
+      <% if @workers != 0 %>
+      stop program = "/bin/su - -c '<%= "#{@puma_directory}/puma_kill.sh" %>'"
+      <% else %>
+      stop program = "/bin/su - -c 'pumactl -S <%= @state_path %> stop'"
+      <% end %>
