@@ -1,8 +1,27 @@
-define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil, rackup: nil,
-                     environment: "production", daemonize: false, pidfile: nil, config_path: nil, state_path: nil, 
-                     stdout_redirect: nil, stderr_redirect: nil, output_append: false,
-                     quiet: false, thread_min: 0, thread_max: 16, bind: nil, control_app_bind: nil,
-                     workers: 0, activate_control_app: true, monit: true, logrotate: true, exec_prefix: nil do
+define :puma_config,
+  :owner => nil,
+  :group => nil,
+  :directory => nil,
+  :puma_directory => nil,
+  :rackup => nil,
+  :environment => "production",
+  :daemonize => false,
+  :pidfile => nil,
+  :config_path => nil,
+  :state_path => nil, 
+  :stdout_redirect => nil,
+  :stderr_redirect => nil,
+  :output_append => false,
+  :quiet => false,
+  :thread_min => 0,
+  :thread_max => 16,
+  :bind => nil,
+  :control_app_bind => nil,
+  :workers => 0,
+  :activate_control_app => true,
+  :monit => true,
+  :logrotate => true,
+  :exec_prefix => nil do
 
   
   # Set defaults if not supplied by caller.
