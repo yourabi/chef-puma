@@ -1,5 +1,6 @@
 define :puma_config,
   :owner => nil,
+  :user => nil,
   :group => nil,
   :directory => nil,
   :puma_directory => nil,
