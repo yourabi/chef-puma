@@ -1,22 +1,24 @@
 define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil, rackup: nil,
-                     environment: "production", daemonize: false, pidfile: nil, config_path: nil, state_path: nil, 
-                     stdout_redirect: nil, stderr_redirect: nil, output_append: false,
+                     environment: "production", daemonize: false, pidfile: nil, config_path: nil, state_path: nil,
+                     stdout_redirect: nil, stderr_redirect: nil, output_append: false, user: nil,
                      quiet: false, thread_min: 0, thread_max: 16, bind: nil, control_app_bind: nil,
                      workers: 0, activate_control_app: true, monit: true, logrotate: true, exec_prefix: nil do
 
-  
+
   # Set defaults if not supplied by caller.
   # Working directory of rails app (where config.ru is)
   unless params[:directory]
     params[:directory] = "/srv/apps/#{params[:name]}"
   end
-  
+  unless params[:user]
+    params[:user] = "vagrant"
+  end
   params[:working_dir] = "#{params[:directory]}/current"
-  
+
   unless params[:puma_directory]
     params[:puma_directory] = "#{params[:directory]}/shared/puma"
   end
-  
+
   unless params[:config_path]
     params[:config_path] = "#{params[:puma_directory]}/#{params[:name]}.config"
   end
@@ -55,7 +57,7 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
     owner params[:owner] if params[:owner]
     group params[:group] if params[:group]
   end
-  
+
   template params[:name] do
     source "puma.rb.erb"
     path "#{params[:config_path]}"
@@ -105,7 +107,7 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
       variables puma_params
     end
   end
-  
+
   if params[:logrotate]
     logrotate_app puma_params[:name] do
       cookbook "logrotate"
