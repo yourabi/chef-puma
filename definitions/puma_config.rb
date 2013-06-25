@@ -13,7 +13,7 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
   unless params[:user]
     params[:user] = "vagrant"
   end
-  params[:working_dir] = "#{params[:directory]}/current"
+  params[:working_dir] = "#{params[:directory]}"
 
   unless params[:puma_directory]
     params[:puma_directory] = "#{params[:directory]}/shared/puma"
