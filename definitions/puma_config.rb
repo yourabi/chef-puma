@@ -10,6 +10,9 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
   unless params[:directory]
     params[:directory] = "/srv/apps/#{params[:name]}"
   end
+  unless params[:app_directory]
+    params[:app_directory] = params[:directory]
+  end
   unless params[:user]
     params[:user] = "vagrant"
   end
