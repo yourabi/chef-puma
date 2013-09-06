@@ -2,7 +2,8 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
                      environment: "production", daemonize: false, pidfile: nil, config_path: nil, state_path: nil, 
                      stdout_redirect: nil, stderr_redirect: nil, output_append: false,
                      quiet: false, thread_min: 0, thread_max: 16, bind: nil, control_app_bind: nil,
-                     workers: 0, activate_control_app: true, monit: true, logrotate: true, exec_prefix: nil do
+                     workers: 0, activate_control_app: true, monit: true, logrotate: true, exec_prefix: nil, 
+                     monit_timeout: 10, config_source: nil, config_cookbook: nil, init_file: nil do
 
   
   # Set defaults if not supplied by caller.
@@ -48,6 +49,18 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
   unless params[:exec_prefix]
     params[:exec_prefix] = "bundle exec"
   end
+  
+  unless params[:config_source]
+    params[:config_source] = "puma.rb.erb"
+  end
+  
+  unless params[:config_cookbook]
+    params[:config_cookbook] = "puma"
+  end
+  
+  if params[:init_file]
+    params[:init_command] = "test -f #{params[:init_file]} && source #{params[:init_file]} ; "
+  end
 
   # Create app working directory with owner/group if specified
   directory params[:puma_directory] do
@@ -57,9 +70,9 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
   end
   
   template params[:name] do
-    source "puma.rb.erb"
-    path "#{params[:config_path]}"
-    cookbook "puma"
+    source params[:config_source]
+    path params[:config_path]
+    cookbook params[:config_cookbook]
     mode "0644"
     owner params[:owner] if params[:owner]
     group params[:group] if params[:group]
