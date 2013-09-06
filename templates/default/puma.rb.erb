@@ -1,7 +1,7 @@
 #!/usr/bin/env puma
 
 # The directory to operate out of.
-directory "<%= @working_dir %>"
+directory "<%= @app_directory %>"
 
 # Use a object or block as the rack application. This allows the
 # config file to be the application itself.
@@ -68,7 +68,7 @@ threads <%= @thread_min %>, <%= @thread_max %>
 # bind 'unix:///var/run/puma.sock'
 # bind 'unix:///var/run/puma.sock?umask=0777'
 # bind 'ssl://127.0.0.1:9292?key=path_to_key&cert=path_to_cert'
-bind "<%= @bind %>"
+bind "tcp://0.0.0.0:3000"
 
 # Instead of “bind 'ssl://127.0.0.1:9292?key=path_to_key&cert=path_to_cert'” you
 # can also use the “ssl_bind” option.
