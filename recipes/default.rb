@@ -6,7 +6,7 @@
 
 gem_package 'bundler' do
   version "#{node.puma[:bundler_version]}"
-  gem_binary '/usr/local/bin/gem'
+  gem_binary "#{node.puma[:rubygems_location]}"  
   options '--no-ri --no-rdoc'
 end
 
