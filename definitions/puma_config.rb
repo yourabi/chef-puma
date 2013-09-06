@@ -126,7 +126,7 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
       frequency "daily"
       rotate 30
       size "5M"
-      options ["missingok", "compress", "delaycompress", "notifempty", "dateformat -%Y%m%d%s", "dateext"]
+      options ["missingok", "compress", "delaycompress", "notifempty", "dateext"]
       variables puma_params
     end
   end
