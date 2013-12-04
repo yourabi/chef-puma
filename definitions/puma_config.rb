@@ -89,6 +89,16 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
     variables params
   end
 
+  template "puma_start.sh" do
+    source "puma_start.sh.erb"
+    path "#{params[:puma_directory]}/puma_start.sh"
+    cookbook "puma"
+    mode "0755"
+    owner params[:owner] if params[:owner]
+    group params[:group] if params[:group]
+    variables params
+  end
+
   template "puma_phased_restart.sh" do
     source "puma_phased_restart.sh.erb"
     path "#{params[:puma_directory]}/puma_phased_restart.sh"

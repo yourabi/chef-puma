@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+source <%= "#{@puma_directory}/puma_kill.sh" %>
+/bin/su - <%= @owner %> -c '<%= @init_command %>cd <%= @working_dir %> && <%= @exec_prefix %> puma -C <%= @config_path %>'
