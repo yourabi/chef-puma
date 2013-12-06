@@ -43,6 +43,7 @@ GEM
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     ffi (1.9.3)
+    foodcritic (0.2.0)
     gssapi (1.0.3)
       ffi (>= 1.0.1)
     gyoku (1.1.0)
@@ -125,3 +126,4 @@ PLATFORMS
 
 DEPENDENCIES
   berkshelf
+  foodcritic
