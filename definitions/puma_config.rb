@@ -1,23 +1,25 @@
-define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil, rackup: nil,
-                     environment: "production", daemonize: false, pidfile: nil, config_path: nil, state_path: nil, 
+define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil, working_dir: nil, rackup: nil,
+                     environment: "production", daemonize: false, pidfile: nil, config_path: nil, state_path: nil,
                      stdout_redirect: nil, stderr_redirect: nil, output_append: false,
                      quiet: false, thread_min: 0, thread_max: 16, bind: nil, control_app_bind: nil,
-                     workers: 0, activate_control_app: true, monit: true, logrotate: true, exec_prefix: nil, 
+                     workers: 0, activate_control_app: true, monit: true, logrotate: true, exec_prefix: nil,
                      monit_timeout: 10, config_source: nil, config_cookbook: nil, init_file: nil do
 
-  
+
   # Set defaults if not supplied by caller.
   # Working directory of rails app (where config.ru is)
   unless params[:directory]
     params[:directory] = "/srv/apps/#{params[:name]}"
   end
-  
-  params[:working_dir] = "#{params[:directory]}/current"
-  
+
+  unless params[:working_dir]
+    params[:working_dir] = "#{params[:directory]}/current"
+  end
+
   unless params[:puma_directory]
     params[:puma_directory] = "#{params[:directory]}/shared/puma"
   end
-  
+
   unless params[:config_path]
     params[:config_path] = "#{params[:puma_directory]}/#{params[:name]}.config"
   end
@@ -49,15 +51,15 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
   unless params[:exec_prefix]
     params[:exec_prefix] = "bundle exec"
   end
-  
+
   unless params[:config_source]
     params[:config_source] = "puma.rb.erb"
   end
-  
+
   unless params[:config_cookbook]
     params[:config_cookbook] = "puma"
   end
-  
+
   if params[:init_file]
     params[:init_command] = "test -f #{params[:init_file]} && source #{params[:init_file]} ; "
   end
@@ -68,7 +70,7 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
     owner params[:owner] if params[:owner]
     group params[:group] if params[:group]
   end
-  
+
   template params[:name] do
     source params[:config_source]
     path params[:config_path]
@@ -128,7 +130,7 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
       variables puma_params
     end
   end
-  
+
   if params[:logrotate]
     logrotate_app puma_params[:name] do
       cookbook "logrotate"
