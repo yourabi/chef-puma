@@ -20,6 +20,9 @@ directory "<%= @working_dir %>"
 rackup "<%= @rackup %>"
 <% end %>
 
+<% if @preload_app %>
+  preload_app!
+<% end %>
 
 # Set the environment in which the rack's app will run. The value must be a string.
 # The default is "development".
@@ -102,6 +105,11 @@ workers <%= @workers %>
 # on_worker_boot do
 #   puts 'On worker boot...'
 # end
+<% if @on_worker_boot %>
+on_worker_boot do
+  <%= @on_worker_boot %>
+end
+<% end %>
 
 # === Puma control rack application ===
 
