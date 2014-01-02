@@ -131,7 +131,7 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
       variables puma_params
     end
   elsif params[:upstart]
-    template "/etc/init/#{puma_params[:name]}.conf" do
+    template "/etc/init/#{puma_params[:name]}-puma.conf" do
       user "root"
       group "root"
       cookbook "puma"
@@ -140,7 +140,7 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
       variables puma_params
     end
 
-    service puma_params[:name] do
+    service "#{puma_params[:name]}-puma" do
       provider Chef::Provider::Service::Upstart
       supports reload: true, restart: true
       action :nothing

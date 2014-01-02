@@ -13,8 +13,6 @@ respawn limit 3 30
 
 reload signal SIGUSR2
 
-instance <%= @name %>
-
 script
 # This script runs in /bin/sh by default. Respawn as bash so we can source in rbenv
 # quoted heredoc to tell /bin/sh not to interpret variables
