@@ -142,7 +142,11 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
 
     service "#{puma_params[:name]}-puma" do
       provider Chef::Provider::Service::Upstart
-      supports reload: true, restart: true
+      if node['lsb']['codename'] == 'raring'
+        supports reload: false, restart: true
+      else
+        supports reload: true, restart: true
+      end
       action :nothing
     end
   end

@@ -10,9 +10,10 @@ chdir <%= @working_dir %>
 
 respawn
 respawn limit 3 30
-
-reload signal SIGUSR2
-
+<%# reload signal is supported since Saucy Salamander %>
+<% unless node['lsb']['codename'] == 'raring' %>
+  reload signal SIGUSR2
+<% end %>
 script
 # This script runs in /bin/sh by default. Respawn as bash so we can source in rbenv
 # quoted heredoc to tell /bin/sh not to interpret variables
