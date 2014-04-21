@@ -21,7 +21,7 @@ rackup "<%= @rackup %>"
 <% end %>
 
 <% if @preload_app %>
-  preload_app!
+preload_app!
 <% end %>
 
 # Set the environment in which the rack's app will run. The value must be a string.
@@ -50,7 +50,9 @@ state_path "<%= @state_path %>"
 # "false".
 # stdout_redirect '/u/apps/lolcat/log/stdout', '/u/apps/lolcat/log/stderr'
 # stdout_redirect '/u/apps/lolcat/log/stdout', '/u/apps/lolcat/log/stderr', true
+<% unless @upstart %>
 stdout_redirect '<%= @stdout_redirect %>', '<%= @stderr_redirect %>', <%= @output_append %>
+<% end %>
 
 
 # Disable request logging.
