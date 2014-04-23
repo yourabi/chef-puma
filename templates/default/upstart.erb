@@ -11,7 +11,7 @@ chdir <%= @working_dir %>
 respawn
 respawn limit 3 30
 <%# reload signal is supported since Saucy Salamander %>
-<% unless node['lsb']['codename'] == 'raring' %>
+<% unless ['raring', 'precise'].include? node['lsb']['codename'] %>
   reload signal SIGUSR2
 <% end %>
 script
