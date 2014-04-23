@@ -136,7 +136,7 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
       group "root"
       cookbook "puma"
       source "upstart.erb"
-      mode "0755"
+      mode "0644"
       variables puma_params
     end
 
