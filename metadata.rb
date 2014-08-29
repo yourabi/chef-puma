@@ -4,7 +4,7 @@ maintainer_email 'yourabi@gmail.com'
 license          'Apache v2.0'
 description      'Installs and configures puma'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.5'
+version          '0.1.6'
 
 recipe           "puma", "Install puma"
 
@@ -18,9 +18,9 @@ end
 attribute "puma/version",
   :display_name => "Puma Version",
   :description => "Puma Version to install",
-  :default => "2.7.0"
+  :default => "2.9.0"
 
 attribute "puma/bundler_version",
   :display_name => "Bundler Version",
   :description => "Bundler Version to install",
-  :default => "1.3.5"
+  :default => "1.7.2"
