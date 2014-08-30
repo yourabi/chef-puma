@@ -18,6 +18,15 @@ monit, logrotate
 
 Usage
 -----
+
+The cookbook contains two definitions: puma_install and puma_config.
+
+The puma_install definition allows you to install multiple instances of puma in different ruby environments by changing the gem_bin_path parameter... but you are not required to use it to install puma if your tool/workflow installs puma differently.
+
+The default recipe simply calls puma_install. If you plan on using puma_install directly you don't need to include the the default recipe in your run list.
+
+The puma_config defintion will create a puma configuration, stop/start scripts and configure monit to watch the puma process. It can be used with or without using puma_install.
+
 Basic puma configuration using defaults based off the application name:
 
     puma_config "app"
@@ -98,8 +107,6 @@ License and Authors
 License: Apache
 
 Authors: Yousef Ourabi
-
-About: This was originally developed for use at [Burstorm](http://www.burstorm.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
