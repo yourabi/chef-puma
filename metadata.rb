@@ -18,7 +18,7 @@ end
 attribute "puma/version",
   :display_name => "Puma Version",
   :description => "Puma Version to install",
-  :default => "2.9.0"
+  :default => "2.9.1"
 
 attribute "puma/bundler_version",
   :display_name => "Bundler Version",
