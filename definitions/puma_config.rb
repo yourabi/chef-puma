@@ -142,7 +142,7 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
 
     service "#{puma_params[:name]}-puma" do
       provider Chef::Provider::Service::Upstart
-      if node['lsb']['codename'] == 'raring'
+      if node["lsb"]["codename"] == "raring"
         supports reload: false, restart: true
       else
         supports reload: true, restart: true
@@ -151,30 +151,31 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
     end
   end
 
-  if params[:logrotate]
-    logrotate_app puma_params[:name] do
-      cookbook "logrotate"
-      path [ puma_params[:stdout_redirect], puma_params[:stderr_redirect] ]
-      frequency "daily"
-      rotate 30
-      size "5M"
-      options ["missingok", "compress", "delaycompress", "notifempty", "dateext"]
-      variables puma_params
-    end
+
+  logrotate_app puma_params[:name] do
+    cookbook "logrotate"
+    path [ puma_params[:stdout_redirect], puma_params[:stderr_redirect] ]
+    frequency "daily"
+    rotate 30
+    size "5M"
+    options ["missingok", "compress", "delaycompress", "notifempty", "dateext"]
+    variables puma_params
+    only_if params[:logrotate]
   end
+
 end
 
 define :puma_install, gem_bin_path: "/usr/local/bin/gem" do
                                          
   gem_package 'bundler' do
-    version node.puma[:bundler_version]
+    version node["puma"]["bundler_version"]
     gem_binary params[:gem_bin_path]
     options '--no-ri --no-rdoc'
   end
 
   gem_package 'puma' do
     action :install
-    version node.puma[:version]
+    version node["puma"]["version"]
     gem_binary params[:gem_bin_path]
   end
 

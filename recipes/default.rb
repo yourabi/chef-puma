@@ -5,5 +5,5 @@
 #
 
 puma_install do
-  gem_bin_path node.puma[:rubygems_location]  
+  gem_bin_path node["puma"]["rubygems_location"]
 end
