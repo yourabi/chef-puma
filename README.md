@@ -1,5 +1,6 @@
 Puma Cookbook
 =============
+[![Build Status](https://travis-ci.org/yourabi/chef-puma.svg?branch=master)](https://travis-ci.org/yourabi/chef-puma)
 
 Chef cookbook for the [puma](http://puma.io) server.
 
