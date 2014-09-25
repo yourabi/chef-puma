@@ -6,7 +6,7 @@ description      'Installs and configures puma'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.6'
 
-recipe           "puma", "Install puma"
+recipe           "puma::default", "Install puma"
 
 depends          'monit'
 depends          'logrotate'
