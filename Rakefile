@@ -19,7 +19,7 @@ task :chef_spec do
   sh "bundle exec rspec"
 end
 
-task :default => [:foodcritic]
+task :default => [:foodcritic, :chef_spec]
 
 private
 
