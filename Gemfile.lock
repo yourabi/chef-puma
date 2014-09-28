@@ -199,8 +199,6 @@ PLATFORMS
 
 DEPENDENCIES
   berkshelf
-  chef (> 11.2)
-  chef-api
   chefspec (= 4.0.2)
   foodcritic
   stove
