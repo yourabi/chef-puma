@@ -93,13 +93,15 @@ Contributing
 
 2. Create a named feature branch (like `add_component_x`)
  
-3. Write you change
+3. Write your change
  
 4. Write tests for your change (if applicable)
  
 5. Run the tests, ensuring they all pass
 
-6. Submit a Pull Request using Github
+6. Squash your commits into one single commit. Submit a Pull Request using Github
+
+7. Assure the PR merges cleanly. Assure the Travis build is passing.
 
 
 License and Authors
