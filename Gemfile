@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 gem 'berkshelf'
 
-gem 'foodcritic'
+gem 'foodcritic', "5.0.0"
 gem "stove"
-gem "chefspec", "4.0.2"
+gem "chefspec"
 
 # Uncomment these lines if you want to live on the Edge:
 #
