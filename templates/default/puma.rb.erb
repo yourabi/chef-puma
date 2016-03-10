@@ -113,6 +113,15 @@ on_worker_boot do
 end
 <% end %>
 
+# Allow workers to reload bundler context when master process is issued
+# a USR1 signal. This allows proper reloading of gems while the master
+# is preserved across a phased-restart. (incompatible with preload_app)
+# (off by default)
+<% if @prune_bundler %>
+prune_bundler
+<% end %>
+
+
 # === Puma control rack application ===
 
 # Start the puma control rack application on "url". This application can
