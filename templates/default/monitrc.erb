@@ -5,3 +5,4 @@ check process <%= @name %>.puma with pidfile <%= @pidfile %>
       <% else %>
       stop program = "/bin/su - <%= @owner %> -c 'cd <%= @working_dir %> && <%= @exec_prefix %> pumactl -S <%= @state_path %> stop'"
       <% end %>
+      restart program = "/bin/su - -c '<%= "#{@puma_directory}/puma_phased_restart.sh" %>'"
