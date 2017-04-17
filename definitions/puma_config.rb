@@ -159,7 +159,6 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
     rotate 30
     size "5M"
     options ["missingok", "compress", "delaycompress", "notifempty", "dateext"]
-    variables puma_params
     enable params[:logrotate]
   end
 
