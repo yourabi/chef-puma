@@ -125,10 +125,11 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
   puma_params = params
   if params[:monit]
     include_recipe "monit"
-    monitrc puma_params[:name], :action => :enable do
+    monitrc puma_params[:name] do
       template_source 'monitrc.erb'
       template_cookbook 'puma'
       variables puma_params
+      action :enable
     end
   elsif params[:upstart]
     template "/etc/init/#{puma_params[:name]}-puma.conf" do
@@ -159,8 +160,7 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
     rotate 30
     size "5M"
     options ["missingok", "compress", "delaycompress", "notifempty", "dateext"]
-    variables puma_params
-    only_if params[:logrotate]
+    enable params[:logrotate]
   end
 
 end
