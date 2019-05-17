@@ -4,7 +4,7 @@ maintainer_email 'yourabi@gmail.com'
 license          'Apache v2.0'
 description      'Installs and configures puma'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.7'
+version          '0.1.8'
 
 recipe           "puma::default", "Install puma"
 
