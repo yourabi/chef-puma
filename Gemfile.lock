@@ -78,7 +78,7 @@ GEM
     fauxhai (2.3.0)
       net-ssh
       ohai
-    ffi (1.9.10)
+    ffi (1.14.2)
     ffi-yajl (1.4.0)
       ffi (~> 1.5)
       libyajl2 (~> 1.2)
